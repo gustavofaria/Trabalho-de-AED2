@@ -79,25 +79,31 @@ int insere_aresta(Grafo *G,int v1,int v2, int capacidade, int custo, int delay, 
     return 1;
 }
 
-int insere_arestaN(Grafo *G,int v1,int v2,int peso){
+int insere_arestaN(Grafo *G,int v1,int v2, int capacidade, int custo, int delay, int trafego){
     if(G==NULL || (v1<0 || v1<0)){
         return -1;
     }
 
-    if(G->aresta[v1][v2]!=0){
+    if((G->aresta[v1][v2].capacidade!=0)||(G->aresta[v1][v2].custo!=0)||(G->aresta[v1][v2].delay!=0)||(G->aresta[v1][v2].trafego!=0)){
         return 0;
     }
 
-    G->aresta[v1][v2]=peso;
+    if((G->aresta[v2][v1].capacidade!=0)||(G->aresta[v2][v1].custo!=0)||(G->aresta[v2][v1].delay!=0)||(G->aresta[v2][v1].trafego!=0)){
+        return 0;
+    }
+
+    G->aresta[v1][v2].capacidade = capacidade;
+    G->aresta[v1][v2].custo = custo;
+    G->aresta[v1][v2].delay = delay;
+    G->aresta[v1][v2].trafego = trafego;
     G->qtd_are++;
     G->grau[v1]++;
     G->grau[v2]++;
 
-    if(G->aresta[v2][v1]!=0){
-        return 0;
-    }
-
-    G->aresta[v2][v1]=peso;
+    G->aresta[v2][v1].capacidade = capacidade;
+    G->aresta[v2][v1].custo = custo;
+    G->aresta[v2][v1].delay = delay;
+    G->aresta[v2][v1].trafego = trafego;
 
 
     return 1;
@@ -110,7 +116,8 @@ void mostra_matriz(Grafo *G){
     int i=0,j=0;
     for(i=0;i<G->qtd_ver;i++){
        for(j=0;j<G->qtd_ver;j++){
-            printf("   [%d][%d]:%d   ",i,j,G->aresta[i][j]);
+
+            printf("   [%d][%d]:(%d,%d,%d,%d)   ",i,j,G->aresta[i][j].capacidade,G->aresta[i][j].custo,G->aresta[i][j].delay, G->aresta[i][j].trafego );
 
        }
     printf("\n");
@@ -123,11 +130,11 @@ int verifica_aresta(Grafo *G,int v1,int v2){
         return -1;
     }
 
-    if(G->aresta[v1][v2]==0){
-        return 0;
+    if(G->aresta[v1][v2].capacidade||G->aresta[v1][v2].custo||G->aresta[v1][v2].delay||G->aresta[v1][v2].trafego){
+        return 1;
     }
 
-return 1;
+return 0;
 }
 
 
@@ -136,11 +143,14 @@ int remove_aresta(Grafo *G,int v1,int v2){
         return -1;
     }
 
-    if(G->aresta[v1][v2]==0){
+ if(!(G->aresta[v2][v1].capacidade||G->aresta[v2][v1].custo||G->aresta[v2][v1].delay||G->aresta[v2][v1].trafego)){
         return 0;
     }
 
-    G->aresta[v1][v2]=0;
+    G->aresta[v1][v2].capacidade = 0;
+    G->aresta[v1][v2].custo = 0;
+    G->aresta[v1][v2].delay = 0;
+    G->aresta[v1][v2].trafego = 0;
     G->grau[v1]--;
     G->grau[v2]--;
 
@@ -152,34 +162,43 @@ int remove_arestaN(Grafo *G,int v1,int v2){
         return -1;
     }
 
-    if(G->aresta[v1][v2]==0){
+  if(G->aresta[v1][v2].capacidade||G->aresta[v1][v2].custo||G->aresta[v1][v2].delay||G->aresta[v1][v2].trafego){
+        return 0;
+    }
+  if(G->aresta[v2][v1].capacidade||G->aresta[v2][v1].custo||G->aresta[v2][v1].delay||G->aresta[v2][v1].trafego){
         return 0;
     }
 
-    G->aresta[v1][v2]=0;
-    G->qtd_are--;
+
+    G->aresta[v1][v2].capacidade = 0;
+    G->aresta[v1][v2].custo = 0;
+    G->aresta[v1][v2].delay = 0;
+    G->aresta[v1][v2].trafego = 0;
     G->grau[v1]--;
     G->grau[v2]--;
 
-    if(G->aresta[v2][v1]==0){
-        return 0;
-    }
 
-    G->aresta[v2][v1]=0;
+    G->aresta[v2][v1].capacidade = 0;
+    G->aresta[v2][v1].custo = 0;
+    G->aresta[v2][v1].delay = 0;
+    G->aresta[v2][v1].trafego = 0;
 
     return 1;
 }
 
-int consulta_aresta(Grafo *G,int v1,int v2,int *n){
+int consulta_aresta(Grafo *G,int v1,int v2,int *capacidade, int*custo, int *delay, int *trafego){
      if(G==NULL || (v1<=0 || v1<=0)){
         return -1;
     }
 
-    if(G->aresta[v1][v2]==0){
+ if(!(G->aresta[v1][v2].capacidade||G->aresta[v1][v2].custo||G->aresta[v1][v2].delay||G->aresta[v1][v2].trafego)){
         return 0;
     }
 
-    *n=G->aresta[v1][v2];
+    *capacidade = G->aresta[v1][v2].capacidade;
+    *custo = G->aresta[v1][v2].custo;
+    *delay = G->aresta[v1][v2].delay;
+    *trafego = G->aresta[v1][v2].trafego;
 
     return 1;
 }
@@ -204,8 +223,8 @@ void mostra_adjacentes(Grafo *G,int v){
 
     int i;
     for(i=0;i<=G->qtd_ver;i++){
-        if(G->aresta[v][i]!=0){
-            printf("[%d][%d]:%d\n",v,i,G->aresta[v][i]);
+ if(!(G->aresta[v][i].capacidade||G->aresta[v][i].custo||G->aresta[v][i].delay||G->aresta[v][i].trafego)){
+            printf("   [%d][%d]:(%d,%d,%d,%d)   ",v,i,G->aresta[v][i].capacidade,G->aresta[v][i].custo,G->aresta[v][i].delay, G->aresta[v][i].trafego );
         }
     }
     }
@@ -261,7 +280,7 @@ void busca_largura(Grafo *G,int v){
   while(f->primeiro!=NULL){
     vet=remove_fila(f);
     for(i=0;i<G->qtd_ver;i++){
-        if(G->aresta[vet][i]!=0){
+    if(G->aresta[vet][i].capacidade||G->aresta[vet][i].custo||G->aresta[vet][i].delay||G->aresta[vet][i].trafego){
         if(visitados[i]==0){
             visitados[i]=1;
             printf(" %d ",i);
