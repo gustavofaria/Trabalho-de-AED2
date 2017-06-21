@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1498062988 source:c:\projetos\grafos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+	"fila.h"
+	<limits.h>
+
+1497461361 
+
+1498063010 c:\projetos\grafos\grafo.h
+
+1498063037 source:c:\projetos\grafos\grafo.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+	"fila.h"
+	<limits.h>
+
+1497461361 source:c:\projetos\grafos\fila.c
+	<stdio.h>
+	<stdlib.h>
+	"fila.h"
+	<limits.h>
+
+1496422494 c:\projetos\grafos\fila.h
+
+1497450561 source:/mnt/D/Google Drive/UFU/2017 - 1/AED 2/Trabalho de programacao/Grafos/fila.c
+	<stdio.h>
+	<stdlib.h>
+	"fila.h"
+	<limits.h>
+
+1496411694 /mnt/D/Google Drive/UFU/2017 - 1/AED 2/Trabalho de programacao/Grafos/fila.h
+
+1498052253 source:/mnt/D/Google Drive/UFU/2017 - 1/AED 2/Trabalho de programacao/Grafos/main.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+	"fila.h"
+	<limits.h>
+
+1498055957 /mnt/D/Google Drive/UFU/2017 - 1/AED 2/Trabalho de programacao/Grafos/grafo.h
+

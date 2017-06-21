@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1498063723 source:c:\projetos\lista_de_adjacencia\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListA.h"
+	"filagrafo.h"
+
+1498063684 c:\projetos\lista_de_adjacencia\lista.h
+
+1498063805 source:c:\projetos\lista_de_adjacencia\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"ListA.h"
+	"filagrafo.h"
+
+1496261897 source:c:\projetos\lista_de_adjacencia\filagrafo.c
+	<stdio.h>
+	<stdlib.h>
+	"filagrafo.h"
+
+1496257015 c:\projetos\lista_de_adjacencia\filagrafo.h
+
