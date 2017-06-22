@@ -4,8 +4,6 @@
 
 typedef struct no No;
 
-
-
 typedef struct grafo Grafo;
 
 Grafo *cria_grafo(int n);

@@ -145,7 +145,7 @@ struct grafo{
 
     void mostra_grafo(Grafo *G){
     if(G==NULL){
-        printf("Grafo n„o existe");
+        printf("Grafo n√£o existe");
     }
     else if(G->qtde_arestas==0){
         printf("Grafo Vazio");
@@ -331,7 +331,7 @@ struct grafo{
     No *aux;
     aux=G->aresta[v];
     if(aux==NULL){
-        printf("O vertice n„o possui adjacentes");
+        printf("O vertice n√£o possui adjacentes");
     }
     else{
         while(aux!=NULL){

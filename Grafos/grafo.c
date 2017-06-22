@@ -6,10 +6,7 @@
     #include <limits.h>
     
     struct aresta{
-        int capacidade;
-        int custo;
-        int delay;
-        int trafego;
+        int peso[4];
     };
 
     struct grafo{
@@ -63,14 +60,14 @@
             return -1;
         }
 
-        if((G->aresta[v1][v2].capacidade!=0)||(G->aresta[v1][v2].custo!=0)||(G->aresta[v1][v2].delay!=0)||(G->aresta[v1][v2].trafego!=0)){
+        if((G->aresta[v1][v2].peso[0]!=0)||(G->aresta[v1][v2].peso[1]!=0)||(G->aresta[v1][v2].peso[2]!=0)||(G->aresta[v1][v2].peso[3]!=0)){
             return 0;
         }
 
-        G->aresta[v1][v2].capacidade = capacidade;
-        G->aresta[v1][v2].custo = custo;
-        G->aresta[v1][v2].delay = delay;
-        G->aresta[v1][v2].trafego = trafego;
+        G->aresta[v1][v2].peso[0] = capacidade;
+        G->aresta[v1][v2].peso[1] = custo;
+        G->aresta[v1][v2].peso[2] = delay;
+        G->aresta[v1][v2].peso[3] = trafego;
 
 
         G->qtd_are++;
@@ -85,26 +82,26 @@
             return -1;
         }
 
-        if((G->aresta[v1][v2].capacidade!=0)||(G->aresta[v1][v2].custo!=0)||(G->aresta[v1][v2].delay!=0)||(G->aresta[v1][v2].trafego!=0)){
+        if((G->aresta[v1][v2].peso[0]!=0)||(G->aresta[v1][v2].peso[1]!=0)||(G->aresta[v1][v2].peso[2]!=0)||(G->aresta[v1][v2].peso[3]!=0)){
             return 0;
         }
 
-        if((G->aresta[v2][v1].capacidade!=0)||(G->aresta[v2][v1].custo!=0)||(G->aresta[v2][v1].delay!=0)||(G->aresta[v2][v1].trafego!=0)){
+        if((G->aresta[v2][v1].peso[0]!=0)||(G->aresta[v2][v1].peso[1]!=0)||(G->aresta[v2][v1].peso[2]!=0)||(G->aresta[v2][v1].peso[3]!=0)){
             return 0;
         }
 
-        G->aresta[v1][v2].capacidade = capacidade;
-        G->aresta[v1][v2].custo = custo;
-        G->aresta[v1][v2].delay = delay;
-        G->aresta[v1][v2].trafego = trafego;
+        G->aresta[v1][v2].peso[0] = capacidade;
+        G->aresta[v1][v2].peso[1] = custo;
+        G->aresta[v1][v2].peso[2] = delay;
+        G->aresta[v1][v2].peso[3] = trafego;
         G->qtd_are++;
         G->grau[v1]++;
         G->grau[v2]++;
 
-        G->aresta[v2][v1].capacidade = capacidade;
-        G->aresta[v2][v1].custo = custo;
-        G->aresta[v2][v1].delay = delay;
-        G->aresta[v2][v1].trafego = trafego;
+        G->aresta[v2][v1].peso[0] = capacidade;
+        G->aresta[v2][v1].peso[1] = custo;
+        G->aresta[v2][v1].peso[2] = delay;
+        G->aresta[v2][v1].peso[3] = trafego;
 
 
         return 1;
@@ -118,7 +115,7 @@
         for(i=0;i<G->qtd_ver;i++){
            for(j=0;j<G->qtd_ver;j++){
 
-                printf("   [%d][%d]:(%d,%d,%d,%d)   ",i,j,G->aresta[i][j].capacidade,G->aresta[i][j].custo,G->aresta[i][j].delay, G->aresta[i][j].trafego );
+                printf("   [%d][%d]:(%d,%d,%d,%d)   ",i,j,G->aresta[i][j].peso[0],G->aresta[i][j].peso[1],G->aresta[i][j].peso[2], G->aresta[i][j].peso[3] );
 
            }
         printf("\n");
@@ -131,7 +128,7 @@
             return -1;
         }
 
-        if(G->aresta[v1][v2].capacidade||G->aresta[v1][v2].custo||G->aresta[v1][v2].delay||G->aresta[v1][v2].trafego){
+        if(G->aresta[v1][v2].peso[0]||G->aresta[v1][v2].peso[1]||G->aresta[v1][v2].peso[2]||G->aresta[v1][v2].peso[3]){
             return 1;
         }
 
@@ -144,14 +141,14 @@
             return -1;
         }
 
-     if(!(G->aresta[v2][v1].capacidade||G->aresta[v2][v1].custo||G->aresta[v2][v1].delay||G->aresta[v2][v1].trafego)){
+     if(!(G->aresta[v2][v1].peso[0]||G->aresta[v2][v1].peso[1]||G->aresta[v2][v1].peso[2]||G->aresta[v2][v1].peso[3])){
             return 0;
         }
 
-        G->aresta[v1][v2].capacidade = 0;
-        G->aresta[v1][v2].custo = 0;
-        G->aresta[v1][v2].delay = 0;
-        G->aresta[v1][v2].trafego = 0;
+        G->aresta[v1][v2].peso[0] = 0;
+        G->aresta[v1][v2].peso[1] = 0;
+        G->aresta[v1][v2].peso[2] = 0;
+        G->aresta[v1][v2].peso[3] = 0;
         G->grau[v1]--;
         G->grau[v2]--;
 
@@ -163,26 +160,26 @@
             return -1;
         }
 
-      if(G->aresta[v1][v2].capacidade||G->aresta[v1][v2].custo||G->aresta[v1][v2].delay||G->aresta[v1][v2].trafego){
+      if(G->aresta[v1][v2].peso[0]||G->aresta[v1][v2].peso[1]||G->aresta[v1][v2].peso[2]||G->aresta[v1][v2].peso[3]){
             return 0;
         }
-      if(G->aresta[v2][v1].capacidade||G->aresta[v2][v1].custo||G->aresta[v2][v1].delay||G->aresta[v2][v1].trafego){
+      if(G->aresta[v2][v1].peso[0]||G->aresta[v2][v1].peso[1]||G->aresta[v2][v1].peso[2]||G->aresta[v2][v1].peso[3]){
             return 0;
         }
 
 
-        G->aresta[v1][v2].capacidade = 0;
-        G->aresta[v1][v2].custo = 0;
-        G->aresta[v1][v2].delay = 0;
-        G->aresta[v1][v2].trafego = 0;
+        G->aresta[v1][v2].peso[0] = 0;
+        G->aresta[v1][v2].peso[1] = 0;
+        G->aresta[v1][v2].peso[2] = 0;
+        G->aresta[v1][v2].peso[3] = 0;
         G->grau[v1]--;
         G->grau[v2]--;
 
 
-        G->aresta[v2][v1].capacidade = 0;
-        G->aresta[v2][v1].custo = 0;
-        G->aresta[v2][v1].delay = 0;
-        G->aresta[v2][v1].trafego = 0;
+        G->aresta[v2][v1].peso[0] = 0;
+        G->aresta[v2][v1].peso[1] = 0;
+        G->aresta[v2][v1].peso[2] = 0;
+        G->aresta[v2][v1].peso[3] = 0;
 
         return 1;
     }
@@ -192,14 +189,14 @@
             return -1;
         }
 
-     if(!(G->aresta[v1][v2].capacidade||G->aresta[v1][v2].custo||G->aresta[v1][v2].delay||G->aresta[v1][v2].trafego)){
+     if(!(G->aresta[v1][v2].peso[0]||G->aresta[v1][v2].peso[1]||G->aresta[v1][v2].peso[2]||G->aresta[v1][v2].peso[3])){
             return 0;
         }
 
-        *capacidade = G->aresta[v1][v2].capacidade;
-        *custo = G->aresta[v1][v2].custo;
-        *delay = G->aresta[v1][v2].delay;
-        *trafego = G->aresta[v1][v2].trafego;
+        *capacidade = G->aresta[v1][v2].peso[0];
+        *custo = G->aresta[v1][v2].peso[1];
+        *delay = G->aresta[v1][v2].peso[2];
+        *trafego = G->aresta[v1][v2].peso[3];
 
         return 1;
     }
@@ -224,8 +221,8 @@
 
         int i;
         for(i=0;i<G->qtd_ver;i++){
-     if(((G->aresta[v][i].capacidade)||(G->aresta[v][i].custo)||(G->aresta[v][i].delay)||(G->aresta[v][i].trafego))){
-                printf("   [%d][%d]:(%d,%d,%d,%d)   ",v,i,G->aresta[v][i].capacidade,G->aresta[v][i].custo,G->aresta[v][i].delay, G->aresta[v][i].trafego );
+     if(((G->aresta[v][i].peso[0])||(G->aresta[v][i].peso[1])||(G->aresta[v][i].peso[2])||(G->aresta[v][i].peso[3]))){
+                printf("   [%d][%d]:(%d,%d,%d,%d)   ",v,i,G->aresta[v][i].peso[0],G->aresta[v][i].peso[1],G->aresta[v][i].peso[2], G->aresta[v][i].peso[3] );
             }
         }
         }
@@ -257,7 +254,7 @@
         for(i=0;i<G->qtd_ver;i++){
            for(j=0;j<G->qtd_ver;j++){
 
-                fprintf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \n",i,j,G->aresta[i][j].capacidade,G->aresta[i][j].custo,G->aresta[i][j].delay, G->aresta[i][j].trafego );
+                fprintf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \n",i,j,G->aresta[i][j].peso[0],G->aresta[i][j].peso[1],G->aresta[i][j].peso[2], G->aresta[i][j].peso[3] );
 
            }
         }
@@ -272,8 +269,6 @@
         arq = fopen("teste.grafo","r");
         fscanf(arq,"%d",&tam);
         G = cria_grafo(tam);
-        fscanf(arq,"%c",&capacidade);
-        fscanf(arq,"%c",&capacidade);
         while(1)
         {
             if(fscanf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \nq", &inicial, &final, &capacidade, &custo, &delay, &trafego)==EOF) return G;
@@ -325,7 +320,7 @@
       while(f->primeiro!=NULL){
         vet=remove_fila(f);
         for(i=0;i<G->qtd_ver;i++){
-        if(G->aresta[vet][i].capacidade||G->aresta[vet][i].custo||G->aresta[vet][i].delay||G->aresta[vet][i].trafego){
+        if(G->aresta[vet][i].peso[0]||G->aresta[vet][i].peso[1]||G->aresta[vet][i].peso[2]||G->aresta[vet][i].peso[3]){
             if(visitados[i]==0){
                 visitados[i]=1;
                 printf(" %d ",i);

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"a",
+				"aresta"
+			],
+			[
 				"li",
 				"libera_grafo"
 			],
@@ -88,10 +92,6 @@
 				"minmax"
 			],
 			[
-				"a",
-				"a2"
-			],
-			[
 				"i",
 				"i"
 			],
@@ -108,47 +108,52 @@
 	"buffers":
 	[
 		{
-			"file": "filagrafo.h",
+			"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/main.c",
 			"settings":
 			{
-				"buffer_size": 329,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Filagrafo.c",
-			"settings":
-			{
-				"buffer_size": 1052,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "ListA.c",
-			"settings":
-			{
-				"buffer_size": 8467,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "#ifndef LISTA_H_INCLUDED\n#define LISTA_H_INCLUDED\n\nstruct no{\n    int vertice;\n    int peso[4];\n    struct no *prox;\n};\ntypedef struct no No;\n\nstruct grafo{\n    int qtde_vertices, qtde_arestas;\n    int *grau;\n    No**aresta;\n};\n\ntypedef struct grafo Grafo;\n\nGrafo *cria_grafo(int n);\nint insere_aresta(Grafo *G,int v1,int v2,int capacidade, int custo, int delay, int trafego);\nint insere_arestaN(Grafo *G,int v1,int v2,int capacidade, int custo, int delay, int trafego);\nvoid mostra_grafo(Grafo *G);\nint verifica_aresta(Grafo *G,int v1,int v2);\nint remove_aresta(Grafo *G,int v1,int v2);\nint remove_arestaN(Grafo *G,int v1,int v2);\nint consulta_aresta(Grafo *G,int v1,int v2,int *capacidade, int * custo, int *delay, int * trafego);\nvoid libera_grafo(Grafo **G);\nvoid mostra_adjacentes(Grafo *G,int v);\nvoid busca_profundidade(Grafo *G,int v,int *visitados);\nvoid DPS(Grafo *G,int v);\nvoid busca_largura(Grafo *G,int v);\n#endif // LISTA_H_INCLUDED\n",
-			"file": "ListA.h",
-			"file_size": 852,
-			"file_write_time": 131425949147941607,
-			"settings":
-			{
-				"buffer_size": 948,
+				"buffer_size": 1400,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "main.c",
+			"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/grafo.c",
 			"settings":
 			{
-				"buffer_size": 1410,
+				"buffer_size": 9561,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/grafo.h",
+			"settings":
+			{
+				"buffer_size": 918,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/teste.grafo",
+			"settings":
+			{
+				"buffer_size": 1531,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/fila.c",
+			"settings":
+			{
+				"buffer_size": 1068,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/fila.h",
+			"settings":
+			{
+				"buffer_size": 329,
 				"line_ending": "Windows"
 			}
 		}
@@ -185,6 +190,12 @@
 	},
 	"file_history":
 	[
+		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Lista_de_Adjacencia/filagrafo.h",
+		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Lista_de_Adjacencia/Filagrafo.c",
+		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Lista_de_Adjacencia/ListA.c",
+		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Lista_de_Adjacencia/ListA.h",
+		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Lista_de_Adjacencia/main.c",
+		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Lista_de_Adjacencia/teste.grafo",
 		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/main.c",
 		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/grafo.c",
 		"/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/grafo.h",
@@ -214,6 +225,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"capacidade",
+			"trafego",
+			"delay",
+			"capacidade",
+			"custo",
+			".custo",
+			"custo",
 			"con",
 			"mostra",
 			"|",
@@ -230,6 +248,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"peso[0]",
+			"peso[3]",
+			"peso[2]",
+			"peso[0]",
+			"peso[1]",
 			"(show)",
 			"(<)",
 			"(>)",
@@ -242,22 +265,82 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "filagrafo.h",
+					"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/main.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 329,
+						"buffer_size": 1400,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/grafo.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7481,
+								7491
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3887.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/grafo.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 918,
 						"regions":
 						{
 						},
@@ -280,50 +363,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Filagrafo.c",
+					"buffer": 3,
+					"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/teste.grafo",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1052,
+						"buffer_size": 1531,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1052,
-								1052
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 3,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 619.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "ListA.c",
+					"buffer": 4,
+					"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/fila.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8467,
+						"buffer_size": 1068,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3254,
-								3254
+								0,
+								0
 							]
 						],
 						"settings":
@@ -332,61 +415,33 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 472.0,
-						"translation.y": 1685.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "ListA.h",
+					"buffer": 5,
+					"file": "/home/gustavo/Área de Trabalho/2017 - 1/AED 2/Trabalho de programacao/Trabalho-de-AED2/Grafos/fila.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 948,
+						"buffer_size": 329,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								859,
-								859
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "main.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1410,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								640,
-								640
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
