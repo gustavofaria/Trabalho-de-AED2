@@ -4,6 +4,17 @@
     #include "filagrafo.h"
 
 
+struct no{
+    int vertice;
+    int peso[4];
+    struct no *prox;
+};
+
+struct grafo{
+    int qtde_vertices, qtde_arestas;
+    int *grau;
+    No**aresta;
+};
     Grafo *cria_grafo(int n){
 
     if(n<=0){
@@ -144,7 +155,7 @@
     for(i=0;i<=G->qtde_vertices;i++){
     aux=G->aresta[i];
     while(aux!=NULL){
-        printf("Vertice [%d]:  %d Peso:%d   ",i,aux->vertice,aux->peso);
+        printf("Vertice [%d]:  %d Pesos:(%d,%d,%d,%d)   ",i,aux->vertice,aux->peso[0],aux->peso[1],aux->peso[2],aux->peso[3]);
         aux=aux->prox;
     }
     printf("\n\n");
@@ -260,7 +271,7 @@
     }
 
 
-    int consulta_aresta(Grafo *G,int v1,int v2,int **peso)
+    int consulta_aresta(Grafo *G,int v1,int v2,int *capacidade, int * custo, int *delay, int * trafego)
     {
 
     if(G==NULL || (v1<0 || v2<0)){
@@ -283,7 +294,10 @@
         aux1=aux1->prox;
     }
 
-    *peso=aux1->peso;
+    *capacidade = aux->peso[0];
+    *custo = aux->peso[1];
+    *delay = aux->peso[2];
+    *trafego = aux->peso[3];
 
     return 1;
     }
@@ -321,7 +335,7 @@
     }
     else{
         while(aux!=NULL){
-            printf("  V -> %d = (%d,%d,%d,%d),",aux->vertice,aux->peso[0],aux->peso[1],,aux->peso[2],aux->peso[3]);
+            printf("  V -> %d = (%d,%d,%d,%d),",aux->vertice,aux->peso[0],aux->peso[1],aux->peso[2],aux->peso[3]);
             aux=aux->prox;
         }
 
@@ -333,19 +347,19 @@
 
 void imprime_grafo(Grafo *G)
 {
-    int i, j;
+    int i;
     FILE *arq;
     arq = fopen("teste.grafo","w");
-    fprintf(arq,"%d\n", G->qtd_ver);
+    fprintf(arq,"%d\n", G->qtde_vertices);
 
     No *aux;
-    i=g->qtd_ver;
+    i=G->qtde_vertices;
     while(i--)
     {
         aux=G->aresta[i];
         while(aux!=NULL)
         {
-            fprintf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \n",i,j,aux->peso[0],aux->peso[1],aux->peso[2],aux->peso[3]);
+            fprintf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \n",i,aux->vertice,aux->peso[0],aux->peso[1],aux->peso[2],aux->peso[3]);
             aux=aux->prox;
         }
     }
@@ -360,8 +374,8 @@ void imprime_grafo(Grafo *G)
             arq = fopen("teste.grafo","r");
             fscanf(arq,"%d",&tam);
             G = cria_grafo(tam);
-            fscanf(arq,"%c",&capacidade);
-            fscanf(arq,"%c",&capacidade);
+            //fscanf(arq,"%c",&capacidade);
+            //fscanf(arq,"%c",&capacidade);
             while(1)
             {
                 if(fscanf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \nq", &inicial, &final, &capacidade, &custo, &delay, &trafego)==EOF) break;

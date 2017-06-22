@@ -9,33 +9,33 @@ int main()
 Grafo *G;
 
 G=cria_grafo(5);
-insere_aresta(G,0,2,2);
-insere_aresta(G,2,0,2);
-insere_aresta(G,0,1,1);
-insere_aresta(G,1,2,5);
-insere_aresta(G,1,4,4);
-insere_aresta(G,1,3,3);
-insere_aresta(G,1,0,2);
-insere_aresta(G,2,4,4);
-insere_aresta(G,2,0,3);
-insere_aresta(G,2,1,2);
-insere_aresta(G,3,5,3);
-insere_aresta(G,3,4,2);
-insere_aresta(G,3,1,5);
-insere_aresta(G,4,3,2);
-insere_aresta(G,4,2,5);
-insere_aresta(G,4,1,4);
-insere_aresta(G,5,3,3);
+insere_aresta(G,0,2,2,2,2,2);
+insere_aresta(G,2,0,2,2,2,2);
+insere_aresta(G,0,1,1,1,1,1);
+insere_aresta(G,1,2,5,5,5,5);
+insere_aresta(G,1,4,4,4,4,4);
+insere_aresta(G,1,3,3,3,3,3);
+insere_aresta(G,1,0,2,2,2,2);
+insere_aresta(G,2,4,4,4,4,4);
+insere_aresta(G,2,0,3,3,3,3);
+insere_aresta(G,2,1,2,2,2,2);
+insere_aresta(G,3,5,3,3,3,3);
+insere_aresta(G,3,4,2,2,2,2);
+insere_aresta(G,3,1,5,5,5,5);
+insere_aresta(G,4,3,2,2,2,2);
+insere_aresta(G,4,2,5,2+3,5,5);
+insere_aresta(G,4,1,4,5,5,5);
+insere_aresta(G,5,3,3,3,3,3);
 
 //int a;
 
-
+imprime_grafo(G);
 mostra_grafo(G);
 printf("\n\n");
 remove_arestaN(G,0,2);
 mostra_grafo(G);
 printf("\n\n");
-insere_arestaN(G,0,2,2);
+insere_arestaN(G,0,2,2,2,2,2);
 mostra_grafo(G);
 
 //busca_largura(G,0);
