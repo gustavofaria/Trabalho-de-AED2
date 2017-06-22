@@ -6,25 +6,33 @@
 
 int main()
 {
-Grafo *G1=malloc(sizeof(Grafo));
-G1=cria_grafo(8);
-insere_aresta(G1,0,1,20);
-insere_aresta(G1,1,0,20);
-insere_aresta(G1,0,3,80);
-insere_aresta(G1,0,6,90);
-insere_aresta(G1,1,5,10);
-insere_aresta(G1,5,2,10);
-insere_aresta(G1,5,3,40);
-insere_aresta(G1,2,5,50);
-insere_aresta(G1,2,7,20);
-insere_aresta(G1,2,3,10);
-insere_aresta(G1,3,6,20);
-insere_aresta(G1,6,0,20);
-insere_aresta(G1,4,6,30);
-insere_aresta(G1,4,1,50);
 
-mostra_matriz(G1);
+                                    //o grafo em si é alocado dentro da função cria_grafo, aloca-lo novamente é um erro de lógica
+Grafo *G1;
+G1=cria_grafo(8);
+
+insere_aresta(G1,0,1,20,03,04,666);
+insere_aresta(G1,1,0,20,666,20,20);
+insere_aresta(G1,0,3,80,80,80,80);
+insere_aresta(G1,0,6,90,900,90,90);
+insere_aresta(G1,1,5,10,10,10,10);
+insere_aresta(G1,5,2,10,10,10,10);
+insere_aresta(G1,5,3,40,40,40,40);
+insere_aresta(G1,2,5,50,50,50,50);
+insere_aresta(G1,2,7,20,20,20,20);
+insere_aresta(G1,2,3,10,10,10,10);
+insere_aresta(G1,3,6,20,20,20,20);
+insere_aresta(G1,6,0,20,20,20,20);
+insere_aresta(G1,4,6,30,30,30,30);
+insere_aresta(G1,4,1,50,50,50,50);
+
+imprime_grafo(G1);
+
+
+G1 = le_grafo();
+mostra_adjacentes(G1,2);
 printf("\n\n");
+
 // int s;
     //Dijkstra(G1,0,&s);
 /*remove_arestaN(G1,0,1);

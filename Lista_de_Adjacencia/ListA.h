@@ -3,7 +3,7 @@
 
 struct no{
     int vertice;
-    int peso;
+    int peso[4];
     struct no *prox;
 };
 typedef struct no No;
