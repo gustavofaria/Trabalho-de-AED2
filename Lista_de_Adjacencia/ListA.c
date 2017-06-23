@@ -508,5 +508,14 @@ void imprime_grafo(Grafo *G)
     return Distancias;
 }
 
+int numVertices(Grafo *G){
+return G->qtde_vertices;
+}
 
+int grauVertice(Grafo *G,int v){
+return G->grau[v];
+}
 
+int ehAdjacente(Grafo *G,int v1,int v2){
+return verifica_aresta(G,v1,v2);
+}

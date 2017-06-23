@@ -21,4 +21,8 @@ Grafo *le_grafo();
 void busca_profundidade(Grafo *G,int v,int *visitados);
 void DPS(Grafo *G,int v);
 void busca_largura(Grafo *G,int v);
+int numVertices(Grafo *G);
+int grauVertice(Grafo *G,int v);
+int ehAdjacente(Grafo *G,int v1,int v2);
+
 #endif // LISTA_H_INCLUDED
