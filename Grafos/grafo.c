@@ -283,16 +283,12 @@ return verifica_aresta(G,v1,v2);
         while(1)
         {
             if(fscanf(arq,"   [%d][%d]:(%d,%d,%d,%d)   \nq", &inicial, &final, &capacidade, &custo, &delay, &trafego)==EOF) return G;
- /*           fscanf(arq," %d ", &capacidade);
-            fscanf(arq," %d ", &custo);
-            fscanf(arq," %d ", &delay);
-            fscanf(arq," %d ", &trafego);
- */
+ 
             insere_aresta(G,inicial,final,capacidade,custo,delay,trafego);
 
         }
     }
-/*
+
 void busca_profundidadeN(Grafo *G,int v,int vfi,int *visitado,int metrica,int tamanho)//Modificado
 {
 int i;
@@ -306,7 +302,7 @@ printf(" %d ",v);
 
     for(i=0; i<G->qtd_ver; i++)
     {
-        if(G->aresta[v][i]!=0){
+        if(G->aresta[v][i].peso[metrica]){
         if(visitado[i]==0)
         {
             busca_profundidadeN(G,i,vfi,visitado,metrica,tamanho);
@@ -338,7 +334,7 @@ void busca_larguraN(Grafo *G,int v,int vf,int tamanho,int metrica)//Modificado
         vet=remove_fila(f);
         for(i=0; i<G->qtd_ver; i++)
         {
-            if(G->aresta[vet][i]!=0)
+            if(G->aresta[vet][i].peso[metrica])
             {
                 if(visitados[i]==0)
                 {
@@ -372,9 +368,9 @@ int *DijkstraN(Grafo *G,int v0,int *A,int metrica,int fim,int tamanho) //Modific
     Distancias[v0]=0;
     for(i=0; i<G->qtd_ver; i++)
     {
-        if(G->aresta[v0][i]!=0)
+        if(G->aresta[v0][i].peso[metrica])
         {
-            Distancias[i]=G->aresta[v0][i];
+            Distancias[i]=G->aresta[v0][i]G->aresta[v][i].peso[metrica];
             A[i]=v0;
         }
     }
@@ -404,9 +400,9 @@ int *DijkstraN(Grafo *G,int v0,int *A,int metrica,int fim,int tamanho) //Modific
         Visitados[menor]=1;
         for(j=0; j<G->qtd_ver; j++)
         {
-            if(G->aresta[menor][j]!=0)
+            if(G->aresta[menor][j].peso[metrica])
             {
-                int D=Distancias[menor]+G->aresta[menor][j];
+                int D=Distancias[menor]+G->aresta[menor][j].peso[metrica];
                 if(D<Distancias[j])
                 {
                     Distancias[j]=D;
@@ -433,7 +429,6 @@ printf("%4d",Vfim);
 }
 }
 
-*/
 
 
 

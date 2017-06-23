@@ -34,6 +34,7 @@ printf("\n\n");
 
 int x,v,v1,v2,v0,vf;
 int *A,*visitado;
+while(1){
 
 printf("                                                ROTEAMENTO MULTICAST            ");
 printf("\n\n               MENU \n\n");
@@ -47,6 +48,7 @@ printf("7: SAIR");
 
 printf("\n SELECIONE UMA OPCAO: ");
 scanf("%d",&x);
+getchar();
 
 switch(x){
 
@@ -98,7 +100,7 @@ switch(x){
     case 7: exit(1);
 
 }
-
+}
 
 // int s;
     //Dijkstra(G1,0,&s);
