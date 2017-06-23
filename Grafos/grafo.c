@@ -15,6 +15,17 @@
         Aresta **aresta;
     };
 
+int numVertices(Grafo *G){
+return G->qtd_ver;
+}
+
+int grauVertice(Grafo *G,int v){
+return G->grau[v];
+}
+int ehAdjacente(Grafo *G,int v1,int v2){
+return verifica_aresta(G,v1,v2);
+}
+
 
     Grafo* cria_grafo(int n_ver){
         int i,k;
@@ -281,66 +292,77 @@
 
         }
     }
-    /*
-
-        }
-
-
-
-    void busca_profundidade_aux(Grafo *G,int v,int *visitado){
-    visitado[v]=1;
-
-    printf(" %d ",v);
-
-    int i;
+/*
+void busca_profundidadeN(Grafo *G,int v,int vfi,int *visitado,int metrica,int tamanho)//Modificado
+{
+int i;
+if(v==vfi){
     for(i=0;i<G->qtd_ver;i++){
-        if(visitado[i]==0){
-            busca_profundidade(G,i,visitado);
+        visitado[i]=1;
+    }
+}
+ visitado[v]=1;
+printf(" %d ",v);
+
+    for(i=0; i<G->qtd_ver; i++)
+    {
+        if(G->aresta[v][i]!=0){
+        if(visitado[i]==0)
+        {
+            busca_profundidadeN(G,i,vfi,visitado,metrica,tamanho);
         }
     }
-
     }
+}
 
-    void DFS(Grafo *G,int v){
+void DFSN(Grafo *G,int v,int vfi,int metrica,int tamanho)//Modificado
+{
     int *visitado;
     visitado=calloc(G->qtd_ver,sizeof(int));
-    busca_profundidade(G,v,visitado);
+    busca_profundidadeN(G,v,vfi,visitado,metrica,tamanho);
+}
 
-    }
 
-    void busca_largura(Grafo *G,int v){
-      int *visitados;
-      int vet,i;
-      visitados=calloc(G->qtd_ver,sizeof(int));
-      Fila *f;
-      f=cria_fila(G->qtd_ver);
-      visitados[v]=1;
-      printf(" %d ",v);
-      insere_fila(f,v);
-      while(f->primeiro!=NULL){
+void busca_larguraN(Grafo *G,int v,int vf,int tamanho,int metrica)//Modificado
+{
+    int *visitados;
+    int vet,i;
+    visitados=calloc(G->qtd_ver,sizeof(int));
+    Fila *f;
+    f=cria_fila(G->qtd_ver);
+    visitados[v]=1;
+    printf(" %d ",v);
+    insere_fila(f,v);
+    while(f->primeiro->dado!=vf)
+    {
         vet=remove_fila(f);
-        for(i=0;i<G->qtd_ver;i++){
-        if(G->aresta[vet][i].peso[0]||G->aresta[vet][i].peso[1]||G->aresta[vet][i].peso[2]||G->aresta[vet][i].peso[3]){
-            if(visitados[i]==0){
-                visitados[i]=1;
-                printf(" %d ",i);
-                insere_fila(f,i);
-            }
+        for(i=0; i<G->qtd_ver; i++)
+        {
+            if(G->aresta[vet][i]!=0)
+            {
+                if(visitados[i]==0)
+                {
+                    visitados[i]=1;
+                    printf(" %d ",i);
+                    insere_fila(f,i);
+                }
             }
         }
-      }
-
-
-
-
-
-
     }
 
-    int *Dijkstra(Grafo *G,int v0){
+}
+
+
+int *DijkstraN(Grafo *G,int v0,int *A,int metrica,int fim,int tamanho) //Modificado
+{
     int*Distancias=malloc(G->qtd_ver*sizeof(int));
     int*Visitados=calloc(G->qtd_ver,sizeof(int));
-    int j,i,k,menor,h=0,aux;
+    A=malloc(G->qtd_ver*sizeof(int));
+    int a,j,i,k,menor,aux;
+
+    for(a=0;a<G->qtd_ver;a++){
+        A[a]=-1;
+    }
 
     Visitados[v0]=1;
     for(i=0; i<G->qtd_ver; i++)
@@ -353,30 +375,32 @@
         if(G->aresta[v0][i]!=0)
         {
             Distancias[i]=G->aresta[v0][i];
+            A[i]=v0;
         }
     }
-    int q;
+
     for(k=2; k<G->qtd_ver; k++)
     {
-        for(q=0;q<G->qtd_ver;q++){
-        if(Distancias[q]==99999){
-            printf(" Infinito ");
-        }else
-        printf(" %d ",Distancias[q]);
+        for(i=0;i<G->qtd_ver;i++){
+            if(Visitados[i]!=1){
+            aux=Distancias[i];
+            menor=i;
+            }
         }
-        printf("\n");
-        aux=Distancias[h];
-        menor=h;
         for(i=0; i<G->qtd_ver; i++)
         {
 
-
-            if(aux>Distancias[i] && Visitados[i]!=1)
+            if(Visitados[i]!=1){
+            if(aux>Distancias[i])
             {
+
                 aux=Distancias[i];
                 menor=i;
             }
         }
+
+        }
+
         Visitados[menor]=1;
         for(j=0; j<G->qtd_ver; j++)
         {
@@ -386,15 +410,30 @@
                 if(D<Distancias[j])
                 {
                     Distancias[j]=D;
+                    A[j]=menor;
                 }
             }
         }
-    h++;
-    }
 
+    }
+    mostra_caminho(v0,fim,A);
     return Distancias;
 }
 
 
+void mostra_caminho(int Vini,int Vfim,int *A){
+if(Vini==Vfim){
+    printf("%4d",Vini);
+}
+else if(A[Vfim]==-1){
+    printf("Nao existe caminho de %d pra %d ",Vini,Vfim);
+}else{
+mostra_caminho(Vini,A[Vfim],A);
+printf("%4d",Vfim);
+}
+}
 
-    */
+*/
+
+
+

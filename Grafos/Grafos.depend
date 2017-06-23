@@ -66,3 +66,27 @@
 	"fila.h"
 	<limits.h>
 
+1498137884 source:c:\projetos\trabalho-de-aed2-master\trabalho-de-aed2-master\grafos\fila.c
+	<stdio.h>
+	<stdlib.h>
+	"fila.h"
+	<limits.h>
+
+1498137884 c:\projetos\trabalho-de-aed2-master\trabalho-de-aed2-master\grafos\fila.h
+
+1498238563 source:c:\projetos\trabalho-de-aed2-master\trabalho-de-aed2-master\grafos\grafo.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+	"fila.h"
+	<limits.h>
+
+1498238489 c:\projetos\trabalho-de-aed2-master\trabalho-de-aed2-master\grafos\grafo.h
+
+1498238682 source:c:\projetos\trabalho-de-aed2-master\trabalho-de-aed2-master\grafos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+	"fila.h"
+	<limits.h>
+

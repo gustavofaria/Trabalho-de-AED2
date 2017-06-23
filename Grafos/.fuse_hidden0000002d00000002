@@ -22,12 +22,6 @@ void imprime_grafo(Grafo *G);
 void busca_profundidade(Grafo *G,int v,int *visitado);
 void DFS(Grafo *G,int v);
 void busca_largura(Grafo *G,int v);
-int *DijkstraN(Grafo *G,int v0,int *A,int metrica,int fim,int tamanho);
-int numVertices(Grafo *G);
-int grauVertice(Grafo *G,int v);
-int ehAdjacente(Grafo *G,int v1,int v2);
-void mostra_caminho(int Vini,int Vfim,int *A);
-void busca_profundidadeN(Grafo *G,int v,int vfi,int *visitado,int metrica,int tamanho);
-void DFSN(Grafo *G,int v,int vfi,int metrica,int tamanho);
-void busca_larguraN(Grafo *G,int v,int vf,int tamanho,int metrica);
+int Dijkstra(Grafo *G,int v0,int *D);
+
 #endif // GRAFO_H_INCLUDED
