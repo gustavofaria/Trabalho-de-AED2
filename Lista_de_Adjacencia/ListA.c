@@ -385,7 +385,7 @@ void imprime_grafo(Grafo *G)
             return G;
         }
 
-    void busca_profundidade(Grafo *G,int v,int *visitados){
+    void busca_profundidadeN(Grafo *G,int v,int *visitados, int metrica){
 
     visitados[v]=1;
 
@@ -397,7 +397,7 @@ void imprime_grafo(Grafo *G)
 
     while(aux!=NULL){
         if(visitados[aux->vertice]==0){
-        busca_profundidade(G,aux->vertice,visitados);
+        busca_profundidade(G,aux->vertice,visitados, metrica);
         }
         aux=aux->prox;
     }
@@ -405,7 +405,7 @@ void imprime_grafo(Grafo *G)
     }
 
 
-    void DPS(Grafo *G,int v){
+    void DPSN(Grafo *G,int v){
 
     int *visitados;
 
@@ -415,7 +415,7 @@ void imprime_grafo(Grafo *G)
 
     }
 
-    void busca_largura(Grafo *G,int v){
+    void busca_larguraN(Grafo *G,int v){
 
     int *visitados;
     int vet=0;
@@ -447,7 +447,7 @@ void imprime_grafo(Grafo *G)
 
     }
 
-    int *Dijkstra(Grafo *G,int v0)
+    int *DijkstraN(Grafo *G,int v0)
 {
     int*Distancias=malloc(G->qtde_vertices*sizeof(int));
     int*Visitados=calloc(G->qtde_vertices,sizeof(int));
@@ -470,12 +470,6 @@ void imprime_grafo(Grafo *G)
     int q;
     for(k=2; k<G->qtde_vertices; k++)
     {
-        for(q=0;q<G->qtde_vertices;q++){
-        if(Distancias[q]==99999){
-            printf(" Infinito ");
-        }else
-        printf(" %d ",Distancias[q]);
-        }
         printf("\n");
         aux=Distancias[h];
         menor=h;

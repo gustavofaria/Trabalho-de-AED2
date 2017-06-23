@@ -18,11 +18,12 @@ void libera_grafo(Grafo **G);
 void mostra_adjacentes(Grafo *G,int v);
 void imprime_grafo(Grafo *G);
 Grafo *le_grafo();
-void busca_profundidade(Grafo *G,int v,int *visitados);
-void DPS(Grafo *G,int v);
-void busca_largura(Grafo *G,int v);
+void busca_profundidadeN(Grafo *G,int v,int *visitados, int metrica);
+void DPSN(Grafo *G,int v);
+void busca_larguraN(Grafo *G,int v);
 int numVertices(Grafo *G);
 int grauVertice(Grafo *G,int v);
 int ehAdjacente(Grafo *G,int v1,int v2);
+int *DijkstraN(Grafo *G,int v0);
 
 #endif // LISTA_H_INCLUDED
