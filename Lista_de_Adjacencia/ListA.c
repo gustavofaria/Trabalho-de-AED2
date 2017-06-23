@@ -78,7 +78,7 @@ struct grafo{
             novo->peso[1] = custo;
             novo->peso[2] = delay;
             novo->peso[3] = trafego;
-            
+
             novo->prox=G->aresta[v1];
             G->aresta[v1]=novo;
         }
@@ -131,7 +131,7 @@ struct grafo{
 
         No *novo1=malloc(sizeof(No));
         if(novo1!=NULL){
-            novo1->vertice=v1;  
+            novo1->vertice=v1;
             novo1->peso[0] = capacidade;
             novo1->peso[1] = custo;
             novo1->peso[2] = delay;
@@ -369,7 +369,7 @@ void imprime_grafo(Grafo *G)
         {
             Grafo *G;
             FILE * arq;
-            int tam, inicial, final, capacidade, custo, delay, trafego; 
+            int tam, inicial, final, capacidade, custo, delay, trafego;
 
             arq = fopen("teste.grafo","r");
             fscanf(arq,"%d",&tam);
@@ -446,5 +446,67 @@ void imprime_grafo(Grafo *G)
     }
 
     }
+
+    int *Dijkstra(Grafo *G,int v0)
+{
+    int*Distancias=malloc(G->qtde_vertices*sizeof(int));
+    int*Visitados=calloc(G->qtde_vertices,sizeof(int));
+    int i,k,menor,h=0,aux;
+    No *aux2;
+
+    Visitados[v0]=1;
+    for(i=0; i<G->qtde_vertices; i++)
+    {
+        Distancias[i]=99999;
+    }
+    Distancias[v0]=0;
+    aux2=G->aresta[v0];
+    while(aux2!=NULL){
+
+            Distancias[aux2->vertice]=aux2->peso;
+
+    aux2=aux2->prox;
+    }
+    int q;
+    for(k=2; k<G->qtde_vertices; k++)
+    {
+        for(q=0;q<G->qtde_vertices;q++){
+        if(Distancias[q]==99999){
+            printf(" Infinito ");
+        }else
+        printf(" %d ",Distancias[q]);
+        }
+        printf("\n");
+        aux=Distancias[h];
+        menor=h;
+        for(i=0; i<G->qtde_vertices; i++)
+        {
+
+
+            if(aux>Distancias[i] && Visitados[i]!=1)
+            {
+                aux=Distancias[i];
+                menor=i;
+            }
+        }
+        Visitados[menor]=1;
+        aux2=G->aresta[menor];
+        while(aux2!=NULL){
+
+                int D=Distancias[menor]+aux2->peso;
+                if(D<Distancias[aux2->vertice])
+                {
+                    Distancias[aux2->vertice]=D;
+                }
+        aux2=aux2->prox;
+        }
+    h++;
+    }
+
+
+
+    return Distancias;
+}
+
 
 

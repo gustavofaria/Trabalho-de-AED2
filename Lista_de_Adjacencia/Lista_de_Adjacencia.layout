@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
-	<ActiveTarget name="Debug" />
-	<File name="main.c" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="533" topLine="38" />
-		</Cursor>
-	</File>
-	<File name="filagrafo.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="167" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ListA.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="720" topLine="10" />
-		</Cursor>
-	</File>
-	<File name="Filagrafo.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<ActiveTarget name="Release" />
+	<File name="Filagrafo.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="835" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ListA.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3846" topLine="75" />
+			<Cursor1 position="533" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="filagrafo.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="167" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ListA.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="720" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="ListA.c" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9000" topLine="436" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

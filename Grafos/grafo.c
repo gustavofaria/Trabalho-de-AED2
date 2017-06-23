@@ -4,7 +4,7 @@
     #include "grafo.h"
     #include "fila.h"
     #include <limits.h>
-    
+
     struct aresta{
         int peso[4];
     };
@@ -45,7 +45,7 @@
         }
         for(i=0;i<G->qtd_ver;i++){
             G->aresta[i]=calloc(G->qtd_ver,sizeof(Aresta));
-        
+
                 if (G->aresta[i]== NULL) {
                   for (k=0; k < i; k++) free(G->aresta[k]);
                   free(G->aresta);  free(G->grau);  free(G);  return NULL;
@@ -264,7 +264,7 @@
     {
         Grafo *G;
         FILE * arq;
-        int tam, inicial, final, capacidade, custo, delay, trafego; 
+        int tam, inicial, final, capacidade, custo, delay, trafego;
 
         arq = fopen("teste.grafo","r");
         fscanf(arq,"%d",&tam);
@@ -278,7 +278,7 @@
             fscanf(arq," %d ", &trafego);
  */
             insere_aresta(G,inicial,final,capacidade,custo,delay,trafego);
-        
+
         }
     }
     /*
@@ -337,57 +337,64 @@
 
     }
 
-    int Dijkstra(Grafo *G,int v0,int *Menores){
+    int *Dijkstra(Grafo *G,int v0){
+    int*Distancias=malloc(G->qtd_ver*sizeof(int));
+    int*Visitados=calloc(G->qtd_ver,sizeof(int));
+    int j,i,k,menor,h=0,aux;
 
-
-    int *Visita,i;
-    Visita=calloc(G->qtd_ver,sizeof(int));
-    Menores=malloc(G->qtd_ver*sizeof(int));
-    Visita[v0]=1;
-
-    for(i=0;i<G->qtd_ver;i++){
-        Menores[i]=999999;
+    Visitados[v0]=1;
+    for(i=0; i<G->qtd_ver; i++)
+    {
+        Distancias[i]=99999;
     }
-    Menores[0]=0;
-
-    for(i=0;i<G->qtd_ver;i++){
+    Distancias[v0]=0;
+    for(i=0; i<G->qtd_ver; i++)
+    {
         if(G->aresta[v0][i]!=0)
-        Menores[i]=G->aresta[v0][i];
+        {
+            Distancias[i]=G->aresta[v0][i];
+        }
     }
-    int k,menor,ind,j;
-    for(k=1;k<G->qtd_ver;k++){
-    for(i=0;i<G->qtd_ver;i++){
-    menor=Menores[i];
-    if(Menores[i+1]<menor){
-        menor=Menores[i+1];
-        ind=i;
-    }
-    }
-    Visita[ind]=1;
-
-
-    for(j=0;j<G->qtd_ver;j++){
-     int d;
-     d=(Menores[ind]+G->aresta[ind][j]);
-     if(d<Menores[j]){
-        Menores[j]=d;
-     }
-    }
-    }
-
-
-
-     printf("\n\n\n");
-    for(i=0;i<G->qtd_ver;i++){
-        if(Menores[i]==999999){
-        printf(" infinito ");
+    int q;
+    for(k=2; k<G->qtd_ver; k++)
+    {
+        for(q=0;q<G->qtd_ver;q++){
+        if(Distancias[q]==99999){
+            printf(" Infinito ");
         }else
-        printf(" %d  ",Menores[i]);
-       // printf(" %d  ",Visita[i]);
-    }
-    return 1;
+        printf(" %d ",Distancias[q]);
+        }
+        printf("\n");
+        aux=Distancias[h];
+        menor=h;
+        for(i=0; i<G->qtd_ver; i++)
+        {
 
+
+            if(aux>Distancias[i] && Visitados[i]!=1)
+            {
+                aux=Distancias[i];
+                menor=i;
+            }
+        }
+        Visitados[menor]=1;
+        for(j=0; j<G->qtd_ver; j++)
+        {
+            if(G->aresta[menor][j]!=0)
+            {
+                int D=Distancias[menor]+G->aresta[menor][j];
+                if(D<Distancias[j])
+                {
+                    Distancias[j]=D;
+                }
+            }
+        }
+    h++;
     }
+
+    return Distancias;
+}
+
 
 
     */
