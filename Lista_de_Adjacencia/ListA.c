@@ -397,7 +397,7 @@ void imprime_grafo(Grafo *G)
 
     while(aux!=NULL){
         if(visitados[aux->vertice]==0){
-        busca_profundidade(G,aux->vertice,visitados, metrica);
+        busca_profundidadeN(G,aux->vertice,visitados, metrica);
         }
         aux=aux->prox;
     }
@@ -405,13 +405,13 @@ void imprime_grafo(Grafo *G)
     }
 
 
-    void DPSN(Grafo *G,int v){
+    void DPSN(Grafo *G,int v,int vfi,int metrica,int tamanho){
 
     int *visitados;
 
     visitados=calloc(G->qtde_vertices,sizeof(int));
 
-    busca_profundidade(G,v,visitados);
+    busca_profundidadeN(G,v,visitados,metrica);
 
     }
 
@@ -447,10 +447,10 @@ void imprime_grafo(Grafo *G)
 
     }
 
-    int *DijkstraN(Grafo *G,int v0)
+    int *DijkstraN(Grafo *G,int v0,int metrica)
 {
-    int*Distancias=malloc(G->qtde_vertices*sizeof(int));
-    int*Visitados=calloc(G->qtde_vertices,sizeof(int));
+    int* Distancias=malloc(G->qtde_vertices*sizeof(int));
+    int* Visitados=calloc(G->qtde_vertices,sizeof(int));
     int i,k,menor,h=0,aux;
     No *aux2;
 
@@ -463,7 +463,7 @@ void imprime_grafo(Grafo *G)
     aux2=G->aresta[v0];
     while(aux2!=NULL){
 
-            Distancias[aux2->vertice]=aux2->peso;
+            Distancias[aux2->vertice]=aux2->peso[metrica];
 
     aux2=aux2->prox;
     }
@@ -487,7 +487,7 @@ void imprime_grafo(Grafo *G)
         aux2=G->aresta[menor];
         while(aux2!=NULL){
 
-                int D=Distancias[menor]+aux2->peso;
+                int D=Distancias[menor]+aux2->peso[metrica];
                 if(D<Distancias[aux2->vertice])
                 {
                     Distancias[aux2->vertice]=D;

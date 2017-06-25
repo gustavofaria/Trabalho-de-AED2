@@ -58,13 +58,13 @@ getchar();
 
 switch(x){
 
-    case 1:printf("%d",numVertices(G1));
+    case 1:printf("%d",numVertices(G));
            break;
 
     case 2:printf("\n ESCREVA O VERTICE QUE DESEJA:\n");
            printf("v: ");
            scanf("%d",&v);
-    printf("%d",grauVertice(G1,v));
+    printf("%d",grauVertice(G,v));
     break;
 
     case 3:printf("ESCREVA OS VERTICES QUE VOCE DESEJA:\n");
@@ -72,7 +72,7 @@ switch(x){
            scanf("%d",&v1);
            printf("v2: ");
            scanf("%d",&v2);
-           if(ehAdjacente(G1,v1,v2)==1){
+           if(ehAdjacente(G,v1,v2)==1){
             printf("EH ADJACENTE");
            }else{
            printf("NAO EH ADJACENTE");
